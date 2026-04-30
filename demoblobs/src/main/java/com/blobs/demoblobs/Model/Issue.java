@@ -15,8 +15,16 @@ public class Issue {
     @GeneratedValue
     private  Long id;
     private  String description;
+
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private  User user;
+
+
+    @OneToOne(mappedBy = "issue",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER)
+    private  ImageResponse imageResponse;
 }
